@@ -1,0 +1,67 @@
+<% include partials/_header %>
+<div class="container">
+    <div class="row-mt">
+        <div class="col-md-7">
+            <table class="table table.bordered table-hover">
+                <!-- lists for data -->
+                <thead>
+                    <tr>
+                        <th>n°</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+                        <th>Placa</th>
+                        <th>Estado</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                code for id each row
+                <tbody>
+                    <% if (data) { %>
+                        <% for(var i = 0; i < data.length; i++) { %>
+                          <tr>
+                            <td><%= (i + 1) %></td>
+                            <td><%= data[i].name %></td>
+                            <td><%= data[i].address %></td>
+                            <td><%= data[i].phone %></td>
+                            <td>
+                              <a href="/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
+                              <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                            </td>
+                          </tr>
+                        <% } %>
+                      <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+                <!-- form to fill the table data -->
+                <form action="/add" method="post">
+                    <div class="form-group">
+                        <input type="text" name="marca" placeholder="Marca" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="modelo" placeholder="Modelo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="placa" placeholder="Placa" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="año" placeholder="Año" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="estado" placeholder="Estado" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Save New Car
+                    </button>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+<% include partials/_footer  %>
+
